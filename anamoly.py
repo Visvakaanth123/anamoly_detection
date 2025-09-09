@@ -5,7 +5,7 @@ logs = []
 
 with open("F:/project 2/logs/winlog.0", "r", encoding="utf-8") as f:
     for line in f:
-        # Extract JSON part using regex
+
         match = re.search(r'\[(\d+\.\d+),\s*(\{.*\})\]', line)
         if match:
             timestamp = float(match.group(1))
@@ -46,13 +46,13 @@ columns_to_display = [
     'Channel_Setup', 'SourceName', 'timestamp'
 ]
 
-# If you have the original JSON log loaded in a variable `logs` (a list of dicts)
-# and you used that to build the DataFrame `df`, you can map back like this:
-for idx in anomalies.index[:5]:  # limit to first 5 anomalies
-    log = logs[idx]  # Assuming logs[idx] gives the original log dictionary
+
+for idx in anomalies.index[:5]:  
+    log = logs[idx]  
     print(f"\n Record {log['RecordNumber']} | EventID: {log['EventID']}")
     print(f" TimeGenerated: {log['TimeGenerated']}")
     print(f" Channel: {log['Channel']} | Source: {log['SourceName']}")
     print(f" EventType: {log['EventType']}")
     print(f" Message: {log['Message'][:200] if log['Message'] else 'No message provided'}")
+
     print("  Anomaly detected due to rare combination or missing data.")
