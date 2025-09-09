@@ -40,8 +40,8 @@ df['anamoly'] = model.predict(df)
 anomalies = df[df['anamoly'] == -1]
 print(f"Detected number of anamolies {len(anomalies)} out of {len(df)}")
 
-# Step 2: Select meaningful columns
-columns_to_display = [
+
+columns_display = [
     'RecordNumber', 'EventID', 'EventType_Warning',
     'Channel_Setup', 'SourceName', 'timestamp'
 ]
@@ -56,3 +56,4 @@ for idx in anomalies.index[:5]:
     print(f" Message: {log['Message'][:200] if log['Message'] else 'No message provided'}")
 
     print("  Anomaly detected due to rare combination or missing data.")
+
